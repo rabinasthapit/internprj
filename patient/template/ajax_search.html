@@ -1,0 +1,7 @@
+{% if result.count > 0 %}
+{% for result in results %}
+  <li><a href="#">{{result.fullname}}</a></li>
+  {% endfor %}
+{% else %}
+<li>sorry nothing found. type in some common keyword</li>
+{% endif %}

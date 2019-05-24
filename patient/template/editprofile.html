@@ -1,0 +1,52 @@
+{% extends 'master/master.html' %}
+{% block title %} doctordashboard {% endblock %}
+{% load widget_tweaks %}
+{% load staticfiles %}
+
+{% block content %}
+
+
+{% include 'partial/header2.html' %}
+
+
+<div id="main">
+
+<div class="information">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 col-md-offset-3 editform">
+
+            <form  action="{% url 'editprofile' %}" method="post">
+                {% csrf_token %}
+                    {% for f in form %}
+                <div class="form-group">
+
+                  <label>{{f.label_tag}} <span class="required">*</span></label>
+                  {{f|add_class:'form-control'}}
+
+                </div>
+                      {% endfor %}
+
+              <input type="submit" name="Submit" value="Submit">
+            </form>
+
+          </div>
+      </div>
+
+
+   </div>
+ </div>
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+{% endblock %}

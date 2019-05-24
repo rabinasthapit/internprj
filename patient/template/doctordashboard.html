@@ -1,0 +1,77 @@
+{% extends 'master/master.html' %}
+{% block title %} doctordashboard {% endblock %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+
+{% include 'partial/header2.html' %}
+
+
+<div id="main">
+
+<div class="information">
+  <div class="container">
+      <div class="row">
+
+          <div class="col-md-2">
+            <img src="{% static 'images/doc1.jpg' %}">
+          </div>
+
+           <div class="col-md-10 info">
+            <div ><strong>Full name</strong>:<span>{{doc.fullname}}</span></div>
+            <div><strong>Address</strong>:<span>{{doc.address}}</span></div>
+            <div><strong>Username</strong>:<span>{{doc.username}}</span></div>
+            <div><strong>Email</strong>:<span>{{doc.email}}</span></div>
+            <div><strong>Age</strong>:<span>{{doc.age}}</span></div>
+            <div><strong>Gender</strong>:<span>{{doc.gender}}</span></div>
+            <div><strong>Phone number</strong>:<span>{{doc.contact}}</span></div>
+          </div>
+
+
+              <a href="{% url 'editprofile' %}" class="btn btn-info btn-md">Update Profile </a>
+      </div>
+  </div>
+
+ </div>
+
+</div>
+
+<div class="services">
+    <div class="container">
+    <h2>HISTORY</h2>
+    <div class="row">
+        <div class="col-md-4">
+          <div class="ser1 no-bg">
+             <a href="patientlist.html">Patient</a>
+             <i class="fa fa-id-card" style="font-size:160px;"></i>
+          </div>
+
+         </div>
+         <div class="col-md-4">
+          <div class="ser1 no-bg">
+
+            <p> Appointments</p>
+          <span class="glyphicon glyphicon-list-alt" style="font-size:160px;"></span>
+          </div>
+
+          </div>
+          <div class="col-md-4">
+              <div class="ser1 no-bg">
+                <p>Reports</p>
+                <img src="{% static 'images/report.jpg' %}">
+              </div>
+          </div>
+     </div>
+
+
+
+     </div>
+ </div>
+
+
+
+
+
+{% endblock %}

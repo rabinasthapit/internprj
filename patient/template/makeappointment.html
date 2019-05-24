@@ -1,0 +1,35 @@
+{% extends 'master/master.html' %}
+{% block title %} doctordashboard {% endblock %}
+
+{% load staticfiles %}
+{% load widget_tweaks  %}
+
+{% block content %}
+
+
+{% include 'partial/header2.html' %}
+
+<div id="main">
+<div class="container makeanappointment">
+    <h3>Appointment Form</h3>
+   <form class="appointmentform clearfix" action="{% url 'makeappointment' %}" method="POST">
+       {% csrf_token %}
+     {% for f in form %}
+     <div class="form-group">
+     <label>{{f.label_tag}} <span class="required">*</span></label>
+       {{f|add_class:'form-control'}}
+   </div>
+
+    {% endfor %}
+
+
+    <input type="submit" class="btn btn-primary" value="Submit">
+  </form>
+
+
+</div>
+
+
+</div>
+
+{% endblock %}

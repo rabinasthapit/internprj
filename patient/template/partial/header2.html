@@ -1,0 +1,53 @@
+
+{% load staticfiles %}
+
+<!-- header 2 for doctordashboard  -->
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+  <button class="w3-bar-item w3-button w3-large"
+  onclick="w3_close()">Close &times;</button>
+
+
+  {% if user.is_doctor %}
+
+<a href="{% url 'home' %}" class="w3-bar-item w3-button"><i class="fa fa-home"></i>Home</a>
+<a href="{% url 'dashboard' %}" class="w3-bar-item w3-button"><i class="fa fa-id-badge"></i> Dashboard</a>
+<a href="{% url 'patientlist' %}" class="w3-bar-item w3-button"> <i class="fa fa-address-card"></i>Patient List</a>
+<a href="{% url 'appointments' %}" class="w3-bar-item w3-button"><i class="fa fa-calendar"></i>Appoinment </a>
+<a href="{% url 'send_report' %}" class="w3-bar-item w3-button"><i class="fa fa-newspaper-o"></i>Send Review </a>
+<a href="{% url 'logout' %}" class="w3-bar-item w3-button"><i class="fa fa-user-times"></i>Log Out </a>
+{% else %}
+
+<a href="{% url 'home' %}" class="w3-bar-item w3-button"><i class="fa fa-home"></i>Home</a>
+<a href="{% url 'dashboard' %}" class="w3-bar-item w3-button"><i class="fa fa-id-badge"></i> Dashboard</a>
+<a href="{% url 'makeappointment' %}" class="w3-bar-item w3-button"><i class="fa fa-calendar"></i>Make Appointment</a>
+<a href="{% url 'report' %}" class="w3-bar-item w3-button"><i class="fa fa-newspaper-o"></i>Reports</a>
+<a href="{% url 'logout' %}" class="w3-bar-item w3-button"><i class="fa fa-user-times"></i>Log Out </a>
+{% endif %}
+
+</div>
+
+{% if user.is_doctor %}
+<div class="w3-teal">
+  <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
+  <div class="w3-container topic">
+    <h1>Doctor Dashboard</h1>
+  </div>
+</div>
+{% else %}
+
+<div class="w3-teal">
+  <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
+  <div class="w3-container topic">
+    <h1>Patient Dashboard</h1>
+  </div>
+</div>
+
+{% endif %}
+
+<!-- <div class="w3-teal">
+  <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
+  <div class="w3-container">
+    <h1 style="text-align: center";>Dashboard</h1>
+  </div>
+</div> -->
+<!-- header end -->

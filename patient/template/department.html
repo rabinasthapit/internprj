@@ -1,0 +1,25 @@
+{% extends 'master/master.html' %}
+{% block title %} DEPARTMENT {% endblock %}
+{% load staticfiles %}
+
+
+{% block content %}
+{% include 'partial/header1.html' %}
+
+<div class="main departmentpart">
+    <div class="container">
+
+        <div class="row">
+                {% for x in department %}
+                <div class="col-md-4">
+                  <a href="{% url 'departmentdetails' x.id %}"><img src="{{MEDIA_URL}}{{x.image.url}}" alt="" style="width:100%;" ></a>
+                  <h3><a href="{% url 'departmentdetails' x.id %}">{{x.departmentname}}</a></h3>
+                </div>
+                {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

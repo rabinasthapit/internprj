@@ -1,0 +1,72 @@
+{% extends 'master/master.html' %}
+{% block title %} doctordashboard {% endblock %}
+
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% block content %}
+
+
+{% include 'partial/header2.html' %}
+<div id="main">
+        <div class="list">
+          <div class="container">
+            <h3>Patients List</h3>
+            <form class="searchform" action="index.html" method="post" >
+              {% csrf_token %}
+              <input id="search" type="text" name="" placeholder="search">
+
+            </form>
+            <ul id="search-results" class="search-result">
+
+            </ul>
+            <button type="button" class="accordion btn-primary addpatient-btn" name="button" style="display:block; margin-bottom:40px;">Add Patient</button>
+
+            <div class="panel">
+              <form  action="{% url 'patientlist' %}" method="post" class="addpatient">
+                {% for f in form %}
+                <div class="form-group">
+                  <label>{{f.label_tag}} <span class="required">*</span></label>
+                    {{f|add_class:'form-control'}}
+              </div>
+                {% endfor %}
+                {% csrf_token %}
+                <input type="submit" value="Add">
+              </form>
+          </div>
+
+
+          <table class="table table-hover table table-bordered">
+            <thead>
+              <tr>
+                <th>Fullname</th>
+                <th>Contact</th>
+                <th>Address</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for f in pat_list %}
+              <tr>
+                <td>{{ f.fullname }}</td>
+                <td>{{ f.contact }}</td>
+                <td>{{ f.address }}</td>
+
+
+                <td>
+
+                <a class="btn btn-danger" href="{% url 'pat_delete' f.id %}">Delete</a>
+                </td>
+              </tr>
+            {% endfor %}
+
+
+            </tbody>
+          </table>
+        </div>
+</div>
+
+
+
+
+
+{% endblock %}

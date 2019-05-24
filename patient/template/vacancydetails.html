@@ -1,0 +1,57 @@
+{% extends 'master/master.html' %}
+{% block title %}{{vacancy.vacancytitle}}{% endblock %}
+{% load staticfiles %}
+
+{% load widget_tweaks %}
+{% block content %}
+
+{% include 'partial/header1.html' %}
+
+<div class="main newspart details_part">
+      <div class="container">
+            <h3>{{vacancy.vacancytitle}}</h3>
+            <a href="#"><img src="{{MEDIA_URL}}{{vacancy.image.url}}" alt=""></a>
+
+    <!-- modal pop up -->
+            <div>
+                  <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">
+                    Apply Now
+                  </button>
+
+                   <!-- Modal -->
+                   <div class="modal fade" id="myModal" role="dialog">
+                       <div class="modal-dialog modal-sm">
+                             <div class="modal-content">
+                                   <div class="modal-header">
+                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                     <h4 class="modal-title">Fill in the information</h4>
+                                   </div>
+                                   <div class="modal-body">
+                                     {% if errmsg%}
+                                      <div class="alert alert-danger">{{errmsg}} </div>
+                                     {% endif %}
+                                     <form id="edit-form" action="#" method="POST" enctype="multipart/form-data">
+                                         {% for f in form %}
+                                           <div class="form-group">
+                                               <label>{{f.label_tag}} <span class="required">*</span></label>
+                                              {{f|add_class:'form-control'}}
+                                           </div>
+                                        {% endfor %}
+                                       {% csrf_token %}
+
+                                     <button type="submit" name="button" class="btn btn-primary">Submit</button>
+                                     </form>
+                                   </div>
+                            </div>
+                       </div>
+                    </div>
+
+                  <!-- Modal end   -->
+          </div>
+          <!-- modal pop end -->
+     </div>
+</div>
+
+
+
+{% endblock %}

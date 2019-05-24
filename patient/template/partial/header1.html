@@ -1,0 +1,62 @@
+
+{% load staticfiles %}
+
+
+<!-- header for home page start -->
+<div class="wrapper">
+
+	<div class="container ">
+
+		<nav class="clearfix">
+		<ul class="clearfix main-nav">
+			<li class="dropdown">
+			<button class="dropbtn" onclick="window.location.href = '{% url 'home' %}';">Home</button>
+					 <div class="dropdown-content">
+							 <a href="{% url 'dashboard' %}">My Dashboard</a>
+						</div>
+			</li>
+			<li class="dropdown">
+      <button class="dropbtn" onclick="window.location.href='{% url 'services' %}';">Services</button>
+
+					 <div class="dropdown-content">
+               	{% for x in s %}
+									<a href="{% url 'servicedetails' x.id %}">{{x.name}}</a>
+								{% endfor %}
+            </div>
+      </li>
+        <li class="dropdown">
+      <button class="dropbtn" onclick="window.location.href='{% url 'department' %}';">Departments</button>
+           <div class="dropdown-content">
+						 {% for x in d %}
+               <a href="{% url 'departmentdetails' x.id %}">{{x.departmentname}}</a>
+						 {% endfor %}
+            </div>
+      </li>
+			<li><a href="{% url 'news' %}">News</a></li>
+			<li><a href="{% url 'contactus' %}">Contact Us</a></li>
+			<li><a href="{% url 'aboutus' %}">About Us</a></li>
+
+
+		</ul>
+
+		<div class="login-nav">
+      <ul class="clearfix">
+        <li><input class="searchbox" type="text" placeholder="Search.."></li>
+         <li><button type="submit"><i class="fa fa-search"></i></button></li>
+
+				 {% if user.is_authenticated %}
+				   <li><a href="{% url 'logout' %}">Log out</a></li>
+
+				{% else %}
+		        <li><a href="{% url 'user_login' %}">Login</a></li>
+		        <li><a href="{% url 'register' %}">Register</a></li>
+
+				{% endif %}
+
+      </ul>
+    </div>
+		</nav>
+
+	</div>
+</div>
+<!-- headerend -->

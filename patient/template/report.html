@@ -1,0 +1,42 @@
+{% extends 'master/master.html' %}
+{% block title %} doctordashboard {% endblock %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+
+{% include 'partial/header2.html' %}
+<div id="main">
+
+
+    <div class="container">
+          <h3>All Report and History</h3>
+      {% for x in pat_report %}
+          <div class="aboutreport accordion clearfix">
+             <img src="{% static 'images/report.jpg' %} ">
+             <a href="#"> Record of  {{x.start_date}}</a>
+          </div>
+              <div class="panel">
+                    <div class="row">
+
+                          <div class="col-md-6 report_des ">
+                            <div ><strong>Medicine</strong>:<span>{{x.medicine_name}}</span></div>
+                            <div><strong>Start Date</strong>:<span>{{x.start_date}}</span></div>
+                            <div><strong>Dose</strong>:<span>{{x.dose}}</span></div>
+                            <div><strong>End Date</strong>:<span>{{x.end_date}}</span></div>
+                            <div><strong>Comment</strong>:<span>{{x.comment}}</span></div>
+
+                          </div>
+                    </div>
+              </div>
+
+          {% endfor %}
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}

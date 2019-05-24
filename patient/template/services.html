@@ -1,0 +1,26 @@
+{% extends 'master/master.html' %}
+{% block title %} Services {% endblock %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+{% include 'partial/header1.html' %}
+
+<div class="main departmentpart">
+    <div class="container">
+        <div class="row">
+          {% for x in service %}
+            <div class="col-md-4">
+                <a href="{% url 'servicedetails' x.id %}"><img src="{{MEDIA_URL}}{{x.image.url}}" alt="" style="width:100%;"></a>
+               <h3><a href="{% url 'servicedetails' x.id %}">{{x.name}}</a></h3>
+
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

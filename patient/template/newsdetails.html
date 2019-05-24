@@ -1,0 +1,21 @@
+{% extends 'master/master.html' %}
+{% block title %}{{news.title}}{% endblock %}
+{% load staticfiles %}
+
+
+{% block content %}
+
+{% include 'partial/header1.html' %}
+
+<div class="main newspart details_part">
+
+  <div class="container">
+        <h3>{{news.title}}</h3>
+        <a href="#"><img src="{{MEDIA_URL}}{{news.image.url}}" alt=""></a>
+        <p>{% autoescape off %}{{news.description}} {% endautoescape %}</p>
+
+  </div>
+</div>
+
+
+{% endblock %}

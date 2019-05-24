@@ -1,0 +1,27 @@
+{% extends 'master/master.html' %}
+{% block title %} DEPARTMENT {% endblock %}
+{% load staticfiles %}
+
+
+{% block content %}
+{% include 'partial/header1.html' %}
+
+<div class="main departmentpart">
+    <div class="container">
+
+        <div class="row">
+                <div class="col-md-4">
+                  <a href="#"><img src="{{MEDIA_URL}}{{department.image.url}}" alt="" style="width:100%;" ></a>
+                </div>
+
+                <div class="col-md-8">
+                  <h3><a href="#">{{department.departmentname}}</a></h3>
+                  <p>{% autoescape off %}{{department.description}}{% endautoescape %}</p>
+                </div>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

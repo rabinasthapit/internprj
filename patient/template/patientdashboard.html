@@ -1,0 +1,52 @@
+{% extends 'master/master.html' %}
+{% block title %} Patientdashboard {% endblock %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+
+{% include 'partial/header2.html' %}
+
+
+<div id="main">
+
+<div class="information">
+  <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+          <img src="{% static 'images/pat1.jpg' %}">
+        </div>
+
+         <div class="col-md-10 info">
+          <div ><strong>Full name</strong>:<span>{{pat.fullname}}</span></div>
+          <div><strong>Address</strong>:<span>{{pat.address}}</span></div>
+          <div><strong>Username</strong>:<span>{{pat.username}}</span></div>
+          <div><strong>Email</strong>:<span>{{pat.email}}</span></div>
+          <div><strong>Age</strong>:<span>{{pat.age}}</span></div>
+          <div><strong>Gender</strong>:<span>{{pat.gender}}</span></div>
+          <div><strong>Phone number</strong>:<span>{{pat.contact}}</span></div>
+        </div>
+
+
+         <a href="{% url 'editprofile' %}" class="btn btn-info btn-md">Update Profile </a>
+
+      </div>
+
+
+   </div>
+ </div>
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'master/master.html' %}
+{% block title %} doctordashboard {% endblock %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+
+{% include 'partial/header2.html' %}
+
+
+<div id="main">
+  <div class="list">
+    <div class="container">
+      <h3>Appointment List</h3>
+
+
+
+    <table class="table table-hover table table-bordered">
+      <thead>
+        <tr>
+          <th>Patient Name</th>
+          <th>Symptom</th>
+          <th>Available Date</th>
+          <th>Available Time</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for a in app_list %}
+        <tr>
+          <td>{{ a.user.fullname }}</td>
+          <td>{{ a.symptom }}</td>
+          <td>{{ a.availabledate }}</td>
+          <td>{{a.availabletime}}</td>
+
+
+          <td>
+            <a href="{% url 'dashboard' %}" class="btn btn-success">Approve</a>
+            <a href="{% url 'appointmentdelete' a.id %}" class="btn btn-danger">Delete</a>
+
+          </td>
+        </tr>
+      {% endfor %}
+
+
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
